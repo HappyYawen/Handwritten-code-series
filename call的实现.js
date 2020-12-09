@@ -36,6 +36,19 @@ Function.prototype.call1 = function (context) {
     return result;
 }
 
+//es6实现
+Function.prototype.call2 = function (context) {
+    context = context ? Object(context) : Window;
+
+    var fn = Symbol();
+    context[fn] = this; //将函数赋值给fn
+
+    var args = [...arguments].slice(1)
+    var result = context[fn](...args)
+    delete context[fn];
+    return result;
+}
+
 var name = "jelly.cao"
 var obj = {
     name: 'karla.guo'
@@ -50,6 +63,8 @@ function getNameAndAge(age) {
 }
 getName()
 getName.call1(obj)
+getName.call2(obj)
 
 getNameAndAge(29)
 getNameAndAge.call1(obj, 26)
+getNameAndAge.call2(obj, 26)
