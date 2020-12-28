@@ -1,3 +1,7 @@
+/**
+ * 遍历多叉树
+ * @param {*} obj 
+ */
 function traverseObj(obj) {
     let res = [
         Object.keys(obj)
