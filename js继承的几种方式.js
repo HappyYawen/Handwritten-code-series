@@ -42,11 +42,11 @@ Fish.prototype.voice = 'bubble bubble'
 Fish.prototype.constructor = Fish
 
 const fish = new Fish()
-console.log(fish.name)
+console.log(fish.name)//小金鱼
 const fish2 = new Fish()
 fish2.__proto__.name = '小龙虾'
-console.log(fish.fishFeature)
-console.log(fish.name, fish2.name)
+console.log(fish.fishFeature)//['swimming', 'Spit bubbles', 'Live in water']
+console.log(fish.name, fish2.name) //小龙虾，小龙虾
 
 /**
  * 构造函数继承
