@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <meta name="theme-color" content="#000000" />
+    <title>line-height的三种继承方式</title>
+    <style>
+       .container-1{
+           font-size: 20px;
+           line-height: 30px;
+       }
+       .container-1 p{
+           /*继承line-height为30px*/
+           font-size: 16px;
+       }
+       .container-2{
+           font-size: 20px;
+           line-height: 2;
+       }
+       .container-2 p{
+           /*继承line-height为2*16=32px*/
+           font-size: 16px;
+       }
+
+       .container-3{
+           font-size: 20px;
+           line-height: 200%;/*直接计算为200% * 20 = 40px*/
+       }
+       .container-3 p{
+           /*继承line-height为40px*/
+           font-size: 16px;
+       }
+       p{
+           background-color: gray;
+       }
+    </style>
+  </head>
+
+  <body>
+    <div class="container-1">
+        <p>this is a item</p>
+    </div>
+    <div class="container-2">
+        <p>this is a item</p>
+    </div>
+    <div class="container-3">
+        <p>this is a item</p>
+    </div>
+  </body>
+</html>
