@@ -99,7 +99,12 @@
       }
     </style>
   </head>
-
+<!--
+    圣杯布局与双飞翼布局技术总结：
+    1、使用float布局
+    2、使用margin负值，防以便和中间内容横向重叠
+    3、防止中间内容被两侧覆盖，一个使用padding（圣杯布局）,一个使用margin（双飞翼布局）
+-->
   <body>
     <div id="shengbei">
       <div class="header">header</div>
