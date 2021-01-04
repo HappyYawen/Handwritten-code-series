@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <meta name="theme-color" content="#000000" />
+    <title>经典布局</title>
+    <style>
+      body {
+        min-width: 500px;
+      }
+      /*圣杯布局*/
+      #shengbei .footer,
+      #shengbei .header {
+        text-align: center;
+        background-color: gray;
+      }
+      #shengbei .content {
+        padding-left: 150px;
+        padding-right: 200px;
+        text-align: center;
+      }
+      #shengbei .column {
+        float: left;
+      }
+      #shengbei .left {
+        margin-left: -150px;
+        width: 150px;
+        background-color: red;
+      }
+      #shengbei .center {
+        width: 100%;
+        background-color: brown;
+      }
+      #shengbei .right {
+        margin-right: -200px;
+        width: 200px;
+        background-color: green;
+      }
+      #shengbei .footer {
+        clear: both;
+      }
+      /*双飞翼布局*/
+      #shuangfeiyi {
+        overflow: hidden; /*形成BFC，外界无法干扰，也不干扰外界*/
+        margin-top: 20px;
+        margin-bottom: 20px;
+      }
+      #main {
+        width: 100%;
+        height: 200px;
+        background-color: brown;
+      }
+      #main-wrap {
+        margin: 0 190px 0 190px;
+      }
+      .col {
+        float: left;
+      }
+      #left,
+      #right {
+        width: 190px;
+        height: 200px;
+        background-color: red;
+      }
+      #left {
+        margin-left: -100%;
+      }
+      #right {
+        margin-left: -190px;
+      }
+      /*三点骰子布局*/
+      .flex-container {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        width: 200px;
+        height: 200px;
+        border-radius: 10px;
+        padding: 20px;
+        border: 1px solid rgba(0, 0, 0, 0.2);
+      }
+      .item {
+        flex: 0 1 auto;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background-color: #666;
+      }
+      .item:nth-child(2) {
+        align-self: center;
+      }
+
+      .item:nth-child(3) {
+        align-self: flex-end;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="shengbei">
+      <div class="header">header</div>
+      <div class="content">
+        <div class="left column">left</div>
+        <div class="center column">center</div>
+        <div class="right column">right</div>
+      </div>
+      <div class="footer">footer</div>
+    </div>
+    <div id="shuangfeiyi">
+      <div id="main" class="col">
+        <div id="main-wrap">
+          main
+        </div>
+      </div>
+      <div id="left" class="col">
+        left
+      </div>
+      <div id="right" class="col">
+        right
+      </div>
+    </div>
+    <div class="flex-container">
+      <div class="item"></div>
+      <div class="item"></div>
+      <div class="item"></div>
+    </div>
+  </body>
+</html>

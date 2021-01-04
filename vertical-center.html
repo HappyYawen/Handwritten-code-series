@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <meta name="theme-color" content="#000000" />
+    <title>垂直居中布局</title>
+    <style>
+        .container{
+            border: 1px solid #ccc;
+            margin:10px;
+            padding:10px;
+            height:200px
+        }
+        .item {
+            background-color: #ccc;
+        }
+        .container-1 {
+            text-align:center;
+            line-height: 200px;
+            height: 200px;
+        }
+        .container-2{
+            position: relative;
+        }
+        .container-2 .item{
+            margin: auto;
+            width: 200px;
+        }
+        .container-3{
+            position: relative;
+        }
+        .container-3 .item {
+            position: absolute;
+            height: 100px;
+            width: 200px;
+            left: 50%;
+            top: 50%;
+            margin-left: -100px;
+            margin-top: -50px;
+        }
+        .container-4{
+            position: relative;
+        }
+        .container-4 .item {
+            position: absolute;
+            height: 100px;
+            width: 200px;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+        }
+        .container-5{
+            position: relative;
+        }
+        .container-5 .item {
+            position: absolute;
+            height: 100px;
+            width: 200px;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            right: 0;
+            margin: auto;
+        }
+    </style>
+  </head>
+
+  <body>
+    <div class="container container-1">
+        this is a item, 垂直水平居中
+    </div>
+    <div class="container container-2">
+        <div class="item">
+            this is a item, 水平居中
+        </div>
+    </div>
+    <div class="container container-3">
+        <div class="item">
+            this is a item, 垂直水平居中
+        </div>
+    </div>
+    <div class="container container-4">
+        <div class="item">
+            this is a item, 垂直水平居中
+        </div>
+    </div>
+    <div class="container container-5">
+        <div class="item">
+            this is a item, 垂直水平居中
+        </div>
+    </div>
+  </body>
+</html>
