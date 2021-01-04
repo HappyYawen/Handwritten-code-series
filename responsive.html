@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <meta name="theme-color" content="#000000" />
+    <title>响应式布局方案</title>
+    <style>
+       @media only screen and (max-width: 374px) {
+           /* iphone5或者更小的尺寸，以 iphone5 的宽度（320px）比例设置 font-size */
+           html {
+               font-size: 86px; /* 按比例设置，以iphone6的尺寸为基准，100/86 = 375/320 */
+           }
+       }
+       /*以此为基准线*/
+       @media only screen and (min-width: 375px) and (max-width: 413px) {
+           /* iphone6/7/8 和 iphone X */
+           html {
+               font-size: 100px;
+           }
+       }
+       @media only screen and (min-width: 414px) {
+           /* iphone6p或者更大的尺寸，以 iphone6p 的宽度（414px）比例设置 font-size */
+           html {
+               font-size: 110px;/* 按比例设置，以iphone6的尺寸为基准，100/110 = 375/414 */
+           }
+       }
+       body{
+           font-size: 0.16rem;
+       }
+       #div1{
+           width: 1rem;
+           background-color: gray;
+       }
+    </style>
+  </head>
+
+  <body>
+    <div id="div1">
+        this is a div
+    </div>
+  </body>
+</html>
