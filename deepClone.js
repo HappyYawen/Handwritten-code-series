@@ -24,6 +24,7 @@ function deepClone(obj = {}, hash = new WeakMap()) {
 
     let result = obj instanceof Array ? [] : {}
     hash.set(obj, result)//哈希表设值
+    //Symbol类型的属性，不可枚举，使用Object.getOwnPropertySymbols获取
     let symbols = Object.getOwnPropertySymbols(obj)
     for(let i = 0; i < symbols.length; i++) {
         result[symbols[i]] = deepClone(obj[symbols[i]])
