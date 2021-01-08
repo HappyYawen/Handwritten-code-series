@@ -5,12 +5,47 @@
  * 函数节流非常适用于函数被频繁调用的场景，例如：window.onresize() 事件、mousemove 事件、上传进度等情况
  */
 function throttle(fn, wait) {
-    let previous = 0
+    let previous = 0 //上一次执行fn的时间
     return function(...args) {
-        let now = new Date().getTime()
+        let now = +new Date()
         if(now - previous > wait) {
             previous = now
             fn.apply(this, args)
         }
     }
 }
+//定时器方式实现
+function throttle1(fn, wait) {
+    let timeout = null
+    return function(...args) {
+        let self = this
+        if(!timeout) {
+            fn.apply(self, args)
+            timeout = setTimeout(function(){
+                clearTimeout(timeout)
+                timeout = null
+            },wait)
+        }
+    }
+}
+console.log("触发")
+let a = throttle(function() {
+    console.log("hello")
+}, 3000)
+
+a()//立马打印hello
+
+let b = throttle1(function() {
+    console.log("world")
+}, 3000)
+b()//立马打印world
+
+let timeout = setTimeout(
+    function() {
+        //三秒后打印
+        a()
+        b()
+        clearTimeout(timeout)
+        timeout = null
+    }, 
+3000)
