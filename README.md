@@ -6,6 +6,7 @@
 - promise/A+
 - 节流函数throttle
 - 防抖函数debounce
+- instanceof的原理
 # css布局系列
 - 圣杯布局和双飞翼布局
 - flex三点骰子布局
