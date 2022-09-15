@@ -37,6 +37,7 @@ bar.prototype.friend = 'kevin';
 var bindFoo = bar.bind2(foo, 'Jack'); // bind2
 var obj = new bindFoo(20); // 返回正确
 
+console.log(obj.value); // 返回undefined
 
 console.log(obj.habit); // 返回正确
 // shopping
@@ -44,6 +45,7 @@ console.log(obj.habit); // 返回正确
 console.log(obj.friend); // 返回正确
 // kevin
 obj.__proto__.friend = "Kitty"; // 修改原型
+console.log(bindFoo.prototype === bar.prototype) //false
 
 console.log(obj.friend); // 返回正确
 

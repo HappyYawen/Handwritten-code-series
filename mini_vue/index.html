@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>实现一个简单的vue</title>
+</head>
+<body>
+  <div id="app">
+    <h3>差值表达式</h3>
+    <p>{{ msg }}</p>
+    <p>{{ person.name }}</p>
+    <h3>v-text</h3>
+    <p v-text="count"></p>
+    <p v-text="msg"></p>
+    <h3>v-model</h3>
+    <input type="text" v-model="msg">
+    <input type="text" v-model="count">
+  </div>
+  <script src="./dep.js"></script>
+  <script src="./watcher.js"></script>
+  <script src="./compiler.js"></script>
+  <script src="./observer.js"></script>
+  <script src="./vue.js"></script>
+  <script>
+    const vm = new Vue({
+      el: '#app',
+      data: {
+        msg: 'hello',
+        count: 100,
+        person: {
+          name: 'karla'
+        }
+      }
+    })
+  </script>
+</body>
+</html>

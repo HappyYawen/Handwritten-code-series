@@ -11,6 +11,7 @@ function Animate (name, voice) {
 Animate.description = 'Created by Animate'
 Animate.prototype.say = function () {
     console.log(`I'm ${this.name}, ${this.voice}~~${this.voice}~~`)
+    return 1;
 }
 
 /**
@@ -124,6 +125,7 @@ console.log(cat2.say()) //I'm Orange, miao~~miao~~
 /**
  * 更简单的继承
  * __proto__严格模式下不可用
+ * setPrototypeOf是es6版本对象新增的方法
  */
  function Sheep(name, voice, walk) {
     Animate.call(this, name, voice) //继承Animate的属性
@@ -152,17 +154,18 @@ console.log(Sheep.description) //Created by Animate
 
 class Bird extends Animate {
     constructor(name, voice, walk) {
-        super(name, voice, walk)
+        super(name, voice, walk) // 始终指向父类，调用它就是调用了父类的构造函数
         this.walk = walk
         this.birdFeature = [...this.feature, 'Two legs', 'cute', 'Eat insects', 'Sharp mouth'] //两条腿、可爱、吃虫子、嘴巴尖尖
     } 
     go() {
+        super.say()
         console.log(`${this.walk}~~${this.walk}~~`)
-    }  
+    }
     static description = super.description
 }
 
 const bird = new Bird('骊歌', 'jiujiu', 'tita')
 console.log(bird.birdFeature)
-console.log(bird.go())
-console.log(bird.say())
+console.log('11', bird.go(), '111')
+console.log('22', bird.say(), '222')

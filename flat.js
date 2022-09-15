@@ -5,11 +5,12 @@
 
 Array.prototype.flat1 = function() {
     let newArr = []
-    for(let i = 0; i< this.length; i++) {
-        if(Array.isArray(this[i])) {
-            newArr = newArr.concat(this[i].flat1())
+    let self = this
+    for(let i = 0; i < self.length; i++) {
+        if(Array.isArray(self[i])) {
+            newArr = newArr.concat(self[i].flat1())
         } else {
-            newArr.push(this[i])
+            newArr.push(self[i])
         }
     }
     return newArr

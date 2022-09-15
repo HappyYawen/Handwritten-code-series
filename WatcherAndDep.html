@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>观察者模式</title>
+</head>
+<body>
+  <script>
+    //目标
+    class Dep {
+      constructor() {
+        // 存储所有观察者
+        this.subs = []
+      }
+      // 添加观察者
+      addSub(sub) {
+        if (sub && sub.update) {
+          this.subs.push(sub)
+        }
+      }
+      // 通知
+      notify() {
+        this.subs.forEach(sub => {
+          //通过调用观察者的uodate方法来通知观察者
+          sub.update()
+        })
+      }
+    }
+    //观察者
+    class Watcher {
+      update() {
+        console.log("update!")
+      }
+    }
+    const watch = new Watcher()
+    const dep = new Dep()
+    dep.addSub(watch)
+    dep.notify()
+  </script>
+</body>
+</html>
