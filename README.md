@@ -16,3 +16,6 @@
 - flex三点骰子布局
 - line-height的几种继承方式
 - rem+media query移动端响应式方案
+# vue相关原理
+- vue响应式原理模拟实现
+- vuex状态管理模拟实现

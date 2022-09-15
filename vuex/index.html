@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>模拟实现vuex</title>
+</head>
+
+<body>
+  <div id="app">
+    <h2>测试</h2>
+    <div>count: {{ $store.state.count }}</div>
+    <div>msg: {{ $store.state.msg }}</div>
+    <div>getters: {{ $store.getters.reverseMsg }}</div>
+    <button @click="$store.commit('increase', 3)">mutations</button>
+    <button @click="$store.dispatch('increaseAsync', 6)">actions异步操作</button>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.7.10"></script>
+  <script src="./vuex.js"></script>
+  <script>
+    Vue.use(vuex)
+    const store = new vuex.Store({
+      state: {
+        count: 0,
+        msg: 'hello'
+      },
+      getters: {
+        reverseMsg(state) {
+          return state.msg.split('').reverse().join('')
+        }
+      },
+      mutations: {
+        increase(state, payload) {
+          state.count += payload
+        }
+      },
+      actions: {
+        increaseAsync(state, payload) {
+          setTimeout(() => {
+            state.count += payload
+          }, 2000)
+        }
+      }
+    })
+    const vm = new Vue({
+      store,
+      el: '#app'
+    })
+  </script>
+</body>
+
+</html>
