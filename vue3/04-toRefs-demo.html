@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>vue3.0响应式模拟实现</title>
+</head>
+<body>
+  <script src="./reactive/index.js"></script>
+  <script>
+    function useProduct() {
+      const product = reactive({
+        name: 'iPhone',
+        price: 5000,
+        count: 3
+      })
+      return toRefs(product)
+    }
+    let total = 0
+    const { price, count } = useProduct()
+    effect(() => {
+      total = price.value * count.value
+    })
+    console.log(total)
+    
+    price.value = 4000
+    console.log(total)
+    
+    count.value = 1
+    console.log(total)
+  </script>
+</body>
+</html>
