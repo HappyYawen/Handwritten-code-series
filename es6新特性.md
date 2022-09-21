@@ -80,6 +80,90 @@ node环境下，JavaScript = ECMAScript + Node APIS(fs、net等)
 5. 箭头函数不具有prototype属性(函数实例的prototype属性,只有该函数实例作为构造函数，用new实例话对象时，才有意义)  
 6. call、bind、apply可以改变普通函数的this指向，但是对箭头函数无效     
 
+对象字面量的增强
+```javascript
+  const bar = 'test'
+  const obj = {
+    // bar: bar,
+    bar,
+    //  method: function() {
+    //    console.log('method111', this) // this就是obj本身
+    //  },
+    method() {
+        console.log('method111', this) // this就是obj本身
+    },
+    [Math.random()]: '1111'
+ }
+ obj.method()
+```
+
+Object.is
+```javascript
+console.log(
+  0 == false, // true
+  0 === false, // false
+  +0 === -0, // true
+  NaN === NaN // false
+)
+Object.is(0, false) // false
+Object.is(+0, -0) // false
+Object.is(NaN, NaN) // true
+```
+
+Proxy 代理对象
+> es5中监视数据的读写，使用Object.defineProperty
+> vue2.x中就是使用的Object.defineProperty，完成数据的响应和双向绑定
+> vue3.0实现数据响应式和双向绑定 使用改为Proxy
+1. Object.defineProperty只能监听到读写操作
+2. Proxy能够监听到更多对象操作（比如deleteProperty）
+![avatar](./img/proxy_api.jpg)
+3. Proxy更好的支持数组对象的监视（之前监视数组的方式：重写数组的操作方法，在重写的方法内进行拦截劫持）
+4. Proxy是以非侵入的方式监管了对象的读写
+> Proxy内部对对象属性的操作方法，默认使用的是Reflect的操作api来实现的
+
+Reflect
+意义： 提供了一套统一的用于操作对象的API
+```javascript
+const obj = {
+  name: 'karla',
+  age: 18,
+}
+  console.log('name' in obj)
+  console.log(delete obj['age'])
+  console.log(Object.keys(obj))
+  // 同上
+  Reflect.has(obj, 'name')
+  Reflect.deleteProperty(obj, 'age')
+  Reflect.ownKeys(obj)
+```
+Symbol
+1. 可以用来定义一个唯一标识符
+```javascript
+console.log(Symbol(1) === Symbol(1)) // false
+```
+2. 如果想要复用一个相同的Symbol值，可以使用Symbol.for()来定义
+```javascript
+console.log(Symbol.for(1) === Symbol.for(1)) // true
+// Symbol.for方法的参数，如果不是字符串类型，会自动转化为字符串
+```
+3. Symbol中有些内置的Symbol常量，用来作为内部方法的标示，可以让自定义对象实现一些js当中内置的接口
+```javascript
+const obj = {}
+console.log(obj.toString()) // 对象默认的toString标签是 [object Object]
+// 自定义tostring的标签
+const obj = {
+  [Symbol.toStringTag]: 'XObject'
+}
+console.logobj.toString()) // 此时对象的toString标签是 [object XObject]
+```
+4. 获取对象中Symbol类型的属性名, 调用Object.getOwnPropertySymbols()可以获取对象中所有的Symbol属性名
+
+for...of循环
+以后会作为遍历所有数据结构的统一方式
+可以使用break关键词随时跳出循环
+arr.some()中返回true
+arr.every()中返回false都可以终止遍历
+arr.forEach()中不能跳出循环终止遍历
 #### ES2016新特性
 - 数组实例对象的includes方法
 - 指数运算符
