@@ -1,11 +1,11 @@
 /**
  * 根据执行顺序得知:
  * 1、setTimeout的优先级高于setImmediate
- *    promise.nextTick的优先级高于promise.then
+ *    process.nextTick的优先级高于promise.then
  * 2、每一类异步任务都有一个自己的任务队列，如下：
  * 宏任务                        微任务
  * *************   ********     *****************
- * timeout队列     **     **     promise.nextTick队列
+ * timeout队列     **     **     process.nextTick队列
  * *************  ** 执行栈 **   *****************
  * immediate队列   **     **     promise队列
  * *************   *******      *****************
@@ -13,7 +13,7 @@
  * 3、整体异步队列分为两种情况：宏任务(matro-task)和微任务(micro-task),现称为task和jobs
  * 4、大类的分类：macro-task：script、setTimeout、setImmediate、I/O、UI rendering
  *              micro-task：promise.nextTick、promise、async/await、Object.observe(已废弃)、MutationObserver(html5新特性)
- * 5、执行顺序：先顺序执行script，再清空micro-task、再执行一个宏任务、再清空micro-task。。。。。
+ * 5、执行顺序：先清空micro-task、再执行一个宏任务、再清空micro-task。。。。。
  * 6、await后面的顺序执行内容，都会先进入微任务中等待，当await执行完成，后面的顺序内容会一次性执行完
  */
 
