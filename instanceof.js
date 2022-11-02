@@ -21,3 +21,18 @@ function instance_of(L, R) {
 }
 console.log(instance_of([], Array))
 console.log(instance_of([], Object))
+
+/**
+ * new 运算符构造实例对象的运行原理
+ * 1. 创建一个新的对象，对象的原型指向构造函数的原型对象
+ * 2. 执行构造函数，并且this上下文指向这个对象
+ * 3. 判断构造函数是否有返回对象，如果有则返回，如果没有则返回我们创建的这个对象
+ */
+function new2(func) {// 参数是构造函数
+    let o = Object.create(func.prototype)
+    let res = func.call(o)
+    if( typeof res === 'object') {
+        return res
+    }
+    return o
+}
